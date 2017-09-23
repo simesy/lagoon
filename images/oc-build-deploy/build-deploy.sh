@@ -60,6 +60,7 @@ do
   SERVICE_UPPERCASE=$(echo "$SERVICE_NAME" | tr '[:lower:]' '[:upper:]')
   SERVICE_TYPE=$(cat .amazeeio.yml | shyaml get-value services.$SERVICE_NAME.amazeeio.type custom)
   DOCKERFILE=$(cat .amazeeio.yml | shyaml get-value services.$SERVICE_NAME.build.dockerfile false)
+  PULL_IMAGE=$(cat .amazeeio.yml | shyaml get-value services.$SERVICE_NAME.image false)  
   BUILD_CONTEXT=$(cat .amazeeio.yml | shyaml get-value services.$SERVICE_NAME.build.context .)
 
   IMAGE_TEMPORARY_NAME=${IMAGE}-${SERVICE_NAME}
